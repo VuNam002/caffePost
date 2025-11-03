@@ -1,0 +1,5 @@
+﻿# Thêm vào .gitignore
+obj/
+bin/
+*.user
+*.cache

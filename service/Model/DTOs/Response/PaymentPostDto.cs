@@ -1,0 +1,12 @@
+﻿namespace CaffePOS.Model.DTOs.Response
+{
+    public class PaymentPostDto
+    {
+        public int order_id { get; set; }
+        public DateTime payment_date { get; set; }
+        public decimal amount { get; set; }
+        public string? method { get; set; }
+        public string? transaction_id { get; set; }
+        public string? notes { get; set; }
+    }
+}
