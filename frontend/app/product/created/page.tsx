@@ -89,9 +89,9 @@ const CreateItem: React.FC = () => {
             setTimeout(() => {
                 handleReset();
             }, 2000);
-        } catch (error) {
+        } catch (error: any) {
             console.error('Error creating item:', error);
-            setMessage({ type: 'error', text: 'Có lỗi xảy ra khi tạo sản phẩm' });
+            setMessage({ type: 'error', text: error.message || 'Có lỗi xảy ra khi tạo sản phẩm' });
         } finally {
             setIsLoading(false);
         }

@@ -22,9 +22,17 @@ export async function fetchlogin(userName: string, password: string): Promise<Lo
     }
 }
 
-export async function fetchitems(): Promise<any[]>  {
+export async function fetchitems(page: number = 1, pageSize: number = 10, keyword: string = ''): Promise<any>  {
     try {
-        const res = await fetch(`${API_URL}/Items`, {
+        const params = new URLSearchParams({
+            page: page.toString(),
+            pageSize: pageSize.toString(),
+        });
+        if (keyword) {
+            params.append('keyword', keyword);
+        }
+
+        const res = await fetch(`${API_URL}/Items/paginated?${params.toString()}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -32,14 +40,15 @@ export async function fetchitems(): Promise<any[]>  {
             },
         })
         if(!res.ok) {
-            return [];
+            // Return a default structure in case of an error to prevent crashes
+            return { items: [], totalPages: 0, page: 1 };
         };
         const data = await res.json();
         return data;
 
     } catch (error) {
-        console.error('Login API error:', error);
-        return [];
+        console.error('API error fetching items:', error);
+        return { items: [], totalPages: 0, page: 1 };
     }
 }
 
@@ -114,17 +123,22 @@ export async function fetchItemCreate(newItem: any) {
     try {
         const res = await fetch(`${API_URL}/Items` , {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${getToken()}`
+            },
             body: JSON.stringify(newItem)
         })
         if(!res.ok) {
-            return;
+            const errorData = await res.json().catch(() => ({ message: res.statusText }));
+            throw new Error(errorData.message || 'Failed to create item');
         };
         const data = await res.json();
         return data;
 
     } catch (error) {
-        console.error('Login API error:', error);
+        console.error('Creation API error:', error);
+        throw error;
     }
 }
 
