@@ -25,7 +25,7 @@ namespace CaffePOS.Model
         [ForeignKey(nameof(Category))] 
         public int CategoryId { get; set; }
 
-        [Column("image_url")]
+        [Column("image_url", TypeName = "nvarchar(max)")]
         public string? ImageUrl { get; set; }
 
         [Column("is_active")]

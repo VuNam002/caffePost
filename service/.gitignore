@@ -1,5 +1,13 @@
-﻿# Thêm vào .gitignore
-obj/
-bin/
+﻿# Ignore Visual Studio temporary files, build results, and cache
+.vs/
 *.user
+*.suo
 *.cache
+*.dbmdl
+*.log
+*.vsidx
+*.sqlite
+
+# Ignore build directories
+bin/
+obj/

@@ -54,9 +54,6 @@ namespace CaffePOS.Services
                 if (!string.IsNullOrEmpty(request.Keyword))
                 {
                     var keyword = request.Keyword.ToLower();
-
-                    // === SỬA LỖI Ở ĐÂY ===
-                    // Thêm kiểm tra != null để tránh lỗi crash khi Name hoặc Description trống
                     query = query.Where(i =>
                         (i.Name != null && i.Name.ToLower().Contains(keyword)) ||
                         (i.Description != null && i.Description.ToLower().Contains(keyword)) ||
