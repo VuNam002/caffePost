@@ -34,7 +34,7 @@ export default function ItemsPage() {
 
   const handleSearch = () => {
     setSearchTerm(searchInput);
-    setCurrentPage(1); // Reset về trang 1 khi tìm kiếm
+    setCurrentPage(1);
   };
 
   const handleClearSearch = () => {

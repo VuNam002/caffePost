@@ -22,7 +22,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 
-// This is sample data.
+
 const data = {
   navMain: [
     {
@@ -44,12 +44,12 @@ const data = {
       ],
     },
     {
-      title: "Building Your Application",
+      title: "Danh mục",
       url: "#",
       items: [
         {
-          title: "Routing",
-          url: "#",
+          title: "Danh sách danh mục",
+          url: "/categories",
         },
         {
           title: "Data Fetching",
