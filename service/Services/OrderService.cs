@@ -18,7 +18,6 @@ namespace CaffePOS.Services
             _logger = logger;
         }
 
-        // 📦 Lấy toàn bộ đơn hàng
         public async Task<List<OrderResponseDto>> GetAllOrder()
         {
             try
@@ -63,7 +62,7 @@ namespace CaffePOS.Services
             }
         }
 
-        // 📄 Chi tiết đơn hàng
+        //  Chi tiết đơn hàng
         public async Task<OrderResponseDto?> Detail(int id)
         {
             try
